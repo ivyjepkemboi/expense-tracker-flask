@@ -32,6 +32,7 @@ def add_expense_head():
     current_user_id = get_jwt_identity()
     data = request.get_json()
     name = data.get('name')
+    
 
     if ExpenseHead.query.filter_by(name=name, user_id=current_user_id).first():
         return jsonify({"message": "Expense head already exists for this user"}), 400
